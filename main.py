@@ -1,11 +1,15 @@
 from random import randint
+
 ship_location = randint(0,9)
 ship_board = ["*", "*", "*", "*", "*", "*", "*", "*", "*", "*",]
 ship_board_num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
 print(*ship_board)
 print(*ship_board_num)
+
 user_shot = ""
 isValidInput = False
+
 while isValidInput == False:
     user_shot = input("Where do you want to shoot?: ")
     if user_shot.isnumeric():
@@ -19,15 +23,19 @@ while isValidInput == False:
             print(*ship_board_num)
     else:
         print("Please enter a numeric value between 0-9, not letters or words!")
+
 isCorrectShot = False
+
 if user_shot != ship_location:
     isCorrectShot = False
+    
 while isCorrectShot == False:
     ship_board[user_shot] = "M"
     print(*ship_board)
     print(*ship_board_num)
     print("Please try again!")
     isValidInput = False
+
     while isValidInput == False:
         user_shot = input("Where do you want to shoot?: ")
         if user_shot.isnumeric():
@@ -41,8 +49,10 @@ while isCorrectShot == False:
                 print(*ship_board_num)
         else:
             print("Please enter a numeric value between 0-9, not letters or words!")
+
     if user_shot == ship_location:
         isCorrectShot = True
+
     if isCorrectShot == True:  
         ship_board[user_shot] = "H"
         print(*ship_board)
